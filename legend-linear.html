@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Scaling the circles by data value</title>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script src="d3/d3.v3.js"></script>
+		<script src="d3-legend/d3-legend.js"></script>
+		<script type="text/javascript">
+
+		var linear = d3.scale.linear()
+					  .domain([0,10])
+					  .range(["rgb(46, 73, 123)", "rgb(71, 187, 94)"]);
+
+		var svg = d3.select("body")
+					.append("svg");
+
+		var legend = svg.append("g")
+		  .attr("class", "legendLinear")
+		  .attr("transform", "translate(20,20)")
+		  ;
+
+		var legendLinear = d3.legend.color()
+							  .shapeWidth(30)
+							  .orient('horizontal')
+							  .cells(7)
+							  .scale(linear)
+							  // .call(d3.legend);
+
+		svg.selectAll(".legendLinear")
+		  .call(legendLinear);
+
+
+		</script>
+	</body>
+</html>
